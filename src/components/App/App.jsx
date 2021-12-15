@@ -40,8 +40,9 @@ const App = () => {
   return (
     <>
       <Section title="Please leave feedback">
-        <FeedbackOptions onLeaveFeedback={makeUpState} />
+        <FeedbackOptions options={statistics} onLeaveFeedback={makeUpState} />
       </Section>
+
       <Section title="Statistics">{showStatistic()}</Section>
     </>
   );

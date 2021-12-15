@@ -31,8 +31,8 @@ const Statistics = props => {
 
 Statistics.propTypes = {
   statistics: PropTypes.object.isRequired,
-  total: PropTypes.func,
-  positivePercentage: PropTypes.func,
+  total: PropTypes.func.isRequired,
+  positivePercentage: PropTypes.func.isRequired,
 };
 
 export default Statistics;

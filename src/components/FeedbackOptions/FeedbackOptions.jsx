@@ -1,35 +1,30 @@
 import PropTypes from 'prop-types';
-import s from '../FeedbackOptions/FeedbackOptions.module.css';
+import Button from '../Button/Button';
 
-const FeedbackOptions = ({ onLeaveFeedback }) => {
+const FeedbackOptions = ({ options, onLeaveFeedback }) => {
+  const normalizeName = name =>
+    name
+      .split(' ')
+      .map(word => {
+        const firstUpCaseLetter = word.charAt(0).toUpperCase();
+        const anoterLetter = word.substring(1);
+        return `${firstUpCaseLetter}${anoterLetter}`;
+      })
+      .join(' ');
+
   return (
     <>
-      <button
-        className={s.btn}
-        type="button"
-        onClick={() => onLeaveFeedback('good')}
-      >
-        Good
-      </button>
-      <button
-        className={s.btn}
-        type="button"
-        onClick={() => onLeaveFeedback('neutral')}
-      >
-        Neutral
-      </button>
-      <button
-        className={s.btn}
-        type="button"
-        onClick={() => onLeaveFeedback('bad')}
-      >
-        Bad
-      </button>
+      {Object.keys(options).map(item => (
+        <Button key={item} onClick={() => onLeaveFeedback(item)}>
+          {normalizeName(item)}
+        </Button>
+      ))}
     </>
   );
 };
 
 FeedbackOptions.propTypes = {
+  options: PropTypes.object.isRequired,
   onLeaveFeedback: PropTypes.func.isRequired,
 };
 
